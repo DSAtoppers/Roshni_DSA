@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) {
+        int count=0;
+        if(ruleKey=="type")
+        {
+            for(int i=0;i<items.size();i++)
+            {
+                for(int j=0;j<items[i].size();j++)
+                {
+                    if(j==0 && items[i][j]==ruleValue)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        else if(ruleKey=="color")
+        {
+            for(int i=0;i<items.size();i++)
+            {
+                for(int j=0;j<items[i].size();j++)
+                {
+                    if(j==1 && items[i][j]==ruleValue)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for(int i=0;i<items.size();i++)
+            {
+                for(int j=0;j<items[i].size();j++)
+                {
+                    if(j==2 && items[i][j]==ruleValue)
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+};
