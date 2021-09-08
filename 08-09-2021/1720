@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> decode(vector<int>& encoded, int first) {
+        int n=encoded.size();
+        vector<int>output(n+1);
+        output[0]=first;
+        int k=1;
+        for(int i=0;i<n;i++)
+        {
+            output[k]=output[k-1]^encoded[i];
+            k++;
+        }
+        return output;
+    }
+};
