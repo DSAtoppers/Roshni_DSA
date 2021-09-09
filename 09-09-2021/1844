@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string replaceDigits(string s) {
+        for(int i=1;i<s.size();i++)
+        {
+            if(s[i]>='0' && s[i]<='9')
+            {
+                int k=s[i]-'0';
+                s[i]=s[i-1];
+                s[i] = ( ((s[i] - 'a') + k) % 26 + 'a');
+            }
+        }
+        return s;
+    }
+};
