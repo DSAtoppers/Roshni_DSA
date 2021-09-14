@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int specialArray(vector<int>& nums) {
+        int x = nums.size();
+sort(nums.begin(), nums.end());
+while(x>=0) {
+if(nums.size() - (lower_bound(nums.begin(), nums.end(), x) - nums.begin()) == x) return x;
+else x--;
+}
+return -1;
+        
+    }
+};
