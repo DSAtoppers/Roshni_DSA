@@ -1,0 +1,76 @@
+class Solution {
+public:
+    int first(vector<int>&nums, int target, int low, int high)
+    {
+        int mid;
+        int x=-1;
+        while(low<=high)
+        {
+            mid=low+(high-low)/2;
+            if(nums[mid]==target && nums[mid-1]!=target)
+            {
+                x=mid;
+                break;
+            }
+            else if(nums[mid]==target && nums[mid-1]==target)
+            {
+                high=mid-1;
+            }
+            else if(nums[mid]!=target && nums[mid-1]==target)
+            {
+                high=mid-1;
+            }
+            else if(nums[mid]!=target && nums[mid+1]==target)
+            {
+                low=mid+1;
+            }
+        }
+        return x;
+    }
+    int last(vector<int>&nums, int target, int low, int high)
+    {
+        int mid;
+        int x=-1;
+        while(low<=high)
+        {
+            mid=low+(high-low)/2;
+            if(nums[mid]==target && nums[mid+1]!=target)
+            {
+                x=mid;
+                break;
+            }
+            else if(nums[mid]==target && nums[mid+1]==target)
+            {
+                low=mid+1;
+            }
+            else if(nums[mid]!=target && nums[mid-1]==target)
+            {
+                high=mid-1;
+            }
+            else if(nums[mid]!=target && nums[mid+1]==target)
+            {
+                low=mid+1;
+            }
+        }
+        return x;
+    }
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int>v;
+        if(binary_search(nums.begin(),nums.end(),target))
+           {
+               auto x=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+               auto y=upper_bound(nums.begin(),nums.end(),target)-nums.begin()-1;
+               v.push_back(x);
+               v.push_back(y);
+           }
+        else
+           {
+               v.push_back(-1);
+               v.push_back(-1);
+           }
+        
+        
+        
+        return v;
+    }
+};
