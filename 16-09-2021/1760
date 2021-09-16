@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int minimumSize(vector<int>& nums, int maxOperations) {
+        int low=1;
+        int high = *max_element(nums.begin(),nums.end());
+        int penalty;
+        int ans=high;
+        while(low<high)
+        {
+            penalty=low+(high-low)/2;
+            int op=0;
+            for(int i=0;i<nums.size();i++)
+            {
+                if(nums[i]>penalty)
+                {
+                    if(nums[i]%penalty==0)
+                    {
+                        op+=(nums[i]/penalty)-1;
+                    }
+                    else
+                    {
+                        op+=(nums[i]/penalty);
+                    }
+                }
+            }
+            if(op<=maxOperations)
+            {
+                ans=penalty;
+                high=penalty;
+            }
+            else
+            {
+                low=penalty+1;
+            }
+        }
+        return ans;
+    }
+};
