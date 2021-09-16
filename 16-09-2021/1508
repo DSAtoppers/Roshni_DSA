@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int rangeSum(vector<int>& nums, int n, int left, int right) {
+        vector<int>v;
+        for (int i=0; i <n; i++)
+    {
+        // Pick ending point
+            int x=0;
+        for (int j=i; j<n; j++)
+        {
+            // Print subarray between current starting
+            // and ending points
+            
+                x+=nums[j];
+                v.push_back(x);
+ 
+           
+        }
+    }
+        sort(v.begin(),v.end());
+        int sum=0;
+        // sum=accumulate(v.begin()+left-1,v.begin()+right,sum);
+        for(int i=left-1;i<right;i++)
+        {
+            sum=(sum+v[i])%1000000007;
+        }
+        return sum;
+    }
+};
