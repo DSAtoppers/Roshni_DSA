@@ -1,0 +1,16 @@
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        char x=s[0];
+        int z;
+        for(int i=1;i<s.size();i++)
+        {
+            x=(x^s[i]);
+        }
+        for(int i=0;i<t.size();i++)
+        {
+            x=(x^t[i]);
+        }
+        return x;
+    }
+};
