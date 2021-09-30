@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        vector<int>v,v1;
+        stack<int>s;
+        ListNode *curr=head;
+        while(curr)
+        {
+            v.push_back(curr->val);
+            curr=curr->next;
+        }
+        s.push(v[v.size()-1]);
+        v[v.size()-1]=0;
+        for(int i=v.size()-2;i>=0;i--)
+        {
+            while(!s.empty() && s.top()<=v[i])
+            {
+                s.pop();
+            }
+            int x = (s.empty())?0:s.top();
+            s.push(v[i]);
+            v[i]=x;
+        }
+        return v;
+    }
+};
